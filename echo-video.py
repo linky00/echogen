@@ -14,7 +14,7 @@ for filename in os.listdir(INPUT_FOLDER):
     if extension in [".mp4", ".ogv", ".webm"]:
         examine_clip = editor.VideoFileClip(INPUT_FOLDER + "/" + filename)
         small_size = (int(examine_clip.w / examine_clip.h * HEIGHT), HEIGHT)
-        if examine_clip.rotation in [90, 70]:
+        if examine_clip.rotation in [90, 270]:
             small_size = small_size[::-1]
         for i in range(CLIPS_PER_VIDEO):
             clip = editor.VideoFileClip(INPUT_FOLDER + "/" + filename, target_resolution=small_size)
