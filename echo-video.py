@@ -7,12 +7,13 @@ OUTPUT_FOLDER = "media/echoes/video"
 CLIPS_PER_VIDEO = 3
 MIN_LENGTH = 3.0
 MAX_LENGTH = 7.0
+HEIGHT = 240
 
 for filename in os.listdir(INPUT_FOLDER):
     name, extension = os.path.splitext(filename)
     if extension in [".mp4", ".ogv", ".webm"]:
         examine_clip = editor.VideoFileClip(INPUT_FOLDER + "/" + filename)
-        small_size = (int(examine_clip.w / examine_clip.h * 360), 360)
+        small_size = (int(examine_clip.w / examine_clip.h * HEIGHT), HEIGHT)
         if examine_clip.rotation in [90, 70]:
             small_size = small_size[::-1]
         for i in range(CLIPS_PER_VIDEO):
